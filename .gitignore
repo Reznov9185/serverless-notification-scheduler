@@ -1,0 +1,9 @@
+.chalice/deployments/
+.chalice/deployed/*
+.chalice/venv/
+.idea/*
+__pycache__/
+Pipfile
+Pipfile.lock
+.env
+.python-version
