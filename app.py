@@ -76,6 +76,13 @@ def add_users_to_sqs():
     return json.dumps(response)
 
 
+# TODO: Uncomment the next block, only when you want to enable the scheduler
+# @app.schedule(Rate(1, unit=Rate.DAYS))
+def each_day(event):
+ app.log.debug("Event triggered: ", json.dumps(event.to_dict()))
+ add_users_to_sqs()
+
+
 # Trigger for SQS queue (on enqueue)
 @app.on_sqs_message(queue='msg-queue', batch_size=1)
 def handle_sqs_message(event):
